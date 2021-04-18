@@ -3,25 +3,25 @@ CHECK_NAME = checker
 PS_NAME = push_swap
 
 # DIRECTORY
-PS_DIR = ./push_swap_srcs/
-CHECK_DIR = ./checker_srcs/
-LIBFT_DIR = ./libft/
+PS_DIR = ./push_swap_srcs
+CHECK_DIR = ./checker_srcs
+LIBFT_DIR = ./libft
 
 # LIBRARY
 LIBFT_LIB = ./lib/libft.a
 
 # SOURCES
-PS_SRCS = $(wildcard $(PS_DIR)srcs/*.c)
-CHECK_SRCS = $(wildcard $(CHECK_DIR)srcs/*.c)
+PS_SRCS = $(wildcard $(PS_DIR)/srcs/*.c)
+CHECK_SRCS = $(wildcard $(CHECK_DIR)/srcs/*.c)
 
 # OBJECTS
 PS_OBJS = $(PS_SRCS:.c=.o)
 CHECK_OBJS = $(CHECK_SRCS:.c=.o)
 
 # INCLUDES
-PS_INC = $(PS_DIR)inc/
-CHECK_INC = $(CHECK_DIR)inc/
-LIBFT_INC = $(LIBFT_DIR)inc/
+PS_INC = $(PS_DIR)/inc/
+CHECK_INC = $(CHECK_DIR)/inc/
+LIBFT_INC = $(LIBFT_DIR)/inc/
 
 # COMPILATION
 CC = clang
@@ -33,8 +33,8 @@ all : $(PS_NAME)
 $(PS_NAME) : $(PS_OBJS) 
 	$(CC) $(FLAGS) -o $(PS_NAME) $(PS_OBJS) $(LIBFT_LIB)
 
-$(PS_OBJS) : $(PS_SRCS)
-	$(CC) -o $(PS_OBJS) -c $(PS_SRCS) -I$(LIBFT_INC) -I$(PS_INC)
+$(PS_DIR)/srcs/%.o : $(PS_DIR)/srcs/%.c
+	$(CC) -o $@ -c $< -I$(LIBFT_INC) -I$(PS_INC)
 
 $(LIBFT) :
 	rm -rf $(LIBFT_LIB)
