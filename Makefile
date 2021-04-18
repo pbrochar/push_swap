@@ -1,27 +1,26 @@
 # NAMES
 CHECK_NAME = checker
 PS_NAME = push_swap
-LIBFT = libft.a
 
 # DIRECTORY
-PS_DIR = ./srcs/push_swap
-CHECK_DIR = ./srcs/checker
+PS_DIR = ./push_swap_srcs/
+CHECK_DIR = ./checker_srcs/
 LIBFT_DIR = ./libft/
 
 # LIBRARY
 LIBFT_LIB = ./lib/libft.a
 
 # SOURCES
-PS_SRCS = $(wildcard $(PS_DIR)/*.c)
-CHECK_SRCS = $(wildcard $(CHECK_DIR)/*.c)
+PS_SRCS = $(wildcard $(PS_DIR)srcs/*.c)
+CHECK_SRCS = $(wildcard $(CHECK_DIR)srcs/*.c)
 
 # OBJECTS
 PS_OBJS = $(PS_SRCS:.c=.o)
 CHECK_OBJS = $(CHECK_SRCS:.c=.o)
 
 # INCLUDES
-PS_INC = ./inc/push_swap/
-CHECK_INC = ./inc/checker/
+PS_INC = $(PS_DIR)inc/
+CHECK_INC = $(CHECK_DIR)inc/
 LIBFT_INC = $(LIBFT_DIR)inc/
 
 # COMPILATION
@@ -31,11 +30,11 @@ FLAGS = -Wall -Wextra -Werror
 # RULES
 all : $(PS_NAME)
 
-$(PS_NAME) : $(LIBFT) $(PS_OBJS)
+$(PS_NAME) : $(PS_OBJS) 
 	$(CC) $(FLAGS) -o $(PS_NAME) $(PS_OBJS) $(LIBFT_LIB)
 
-$(PS_OBJS):
-	$(CC) -g -I$(PS_INC) -I$(LIBFT_INC) -o $(PS_OBJS) -c $(PS_SRCS)
+$(PS_OBJS) : $(PS_SRCS)
+	$(CC) -o $(PS_OBJS) -c $(PS_SRCS) -I$(LIBFT_INC) -I$(PS_INC)
 
 $(LIBFT) :
 	rm -rf $(LIBFT_LIB)
@@ -43,9 +42,9 @@ $(LIBFT) :
 	mv $(LIBFT_DIR)libft.a ./lib/
 
 clean : 
-	rm -rf $(PS_OBJS)
+	rm $(PS_OBJS)
 
 fclean : clean
-	rm -rf $(PS_NAME)
+	rm $(PS_NAME)
 
 re : fclean all
