@@ -6,7 +6,7 @@
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 19:55:25 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/19 20:29:02 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:00:49 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,15 @@ int	check_string(const char *arg)
 	return (0);
 }
 
-int	check_duplicate(int *stack_a, int size)
+int	check_duplicate(int *stack_a, int elem)
 {
 	int	i;
-	int	j;
-	int count;
 
 	i = 0;
-	j = 0;
-	while (i < size)
+	while (i < elem)
 	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (stack_a[i] == stack_a[j])
-				return (-1);
-			j++;
-		}
+		if (stack_a[i] == stack_a[elem])
+			return (-1);
 		i++;
 	}
 	return (0);

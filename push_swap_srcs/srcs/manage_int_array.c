@@ -6,10 +6,11 @@
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 15:16:12 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/19 20:36:34 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 21:07:42 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "libft.h"
 
 static int	nb_size(int nbr)
@@ -71,12 +72,24 @@ int			manage_int_array(const char *arg, int **stack_a, int *stack_size)
 	{
 		*stack_a = ft_mem_exp(*stack_a, sizeof(int) * elem, \
 										sizeof(int) * (elem + 1));
+		if (*stack_a == NULL)
+			return (-1);
 		(*stack_a)[elem] = ft_atoi(&arg[i]);
 		if (check_int_overflow((*stack_a)[elem], &arg[i]) == -1)
+			return (-1);
+		if (check_duplicate(*stack_a, elem) == -1)
 			return (-1);
 		i = skip_char(i, arg);
 		elem++;
 	}
 	*stack_size = elem;
+	return (0);
+}
+
+int			init_stack_b(int **stack_b, int stack_size)
+{
+	*stack_b = malloc(sizeof(int) * stack_size);
+	if (stack_b == NULL)
+		return (-1);
 	return (0);
 }
