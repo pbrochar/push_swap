@@ -30,21 +30,23 @@ FLAGS = -Wall -Wextra -Werror
 # RULES
 all : $(PS_NAME)
 
-$(PS_NAME) : $(LIBFT) $(PS_OBJS) 
+$(PS_NAME) : $(PS_OBJS) $(LIBFT_LIB)
 	$(CC) $(FLAGS) -o $(PS_NAME) $(PS_OBJS) $(LIBFT_LIB)
 
 $(PS_DIR)/srcs/%.o : $(PS_DIR)/srcs/%.c
 	$(CC) -o $@ -c $< -I$(LIBFT_INC) -I$(PS_INC)
 
-$(LIBFT) :
+$(LIBFT_LIB) :
 	rm -rf $(LIBFT_LIB)
 	make -C $(LIBFT_DIR)
-	mv $(LIBFT_DIR)libft.a ./lib/
+	mv $(LIBFT_DIR)/libft.a ./lib/
 
 clean : 
-	rm $(PS_OBJS)
+	rm -f $(PS_OBJS)
+	make clean -C $(LIBFT_DIR)
 
 fclean : clean
 	rm $(PS_NAME)
+	rm $(LIBFT_LIB)
 
 re : fclean all

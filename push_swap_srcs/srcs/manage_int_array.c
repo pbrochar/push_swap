@@ -6,7 +6,7 @@
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 15:16:12 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/19 18:55:54 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 18:58:56 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ static int	check_int_overflow(int temp, const char *arg)
 		i++;
 	if (arg[i] == ' ')
 		return (0);
-	if (temp == -1 && (ft_isdigit(arg[i + 1]) || !arg[i]))
-		return (-1);
-	if (temp == 0 && (arg[i + 1] != ' ' || !arg[i]))
+	if ((temp == -1 && (ft_isdigit(arg[i + 1]) || !arg[i]))
+		|| (temp == 0 && (arg[i + 1] != ' ' || !arg[i])))
 		return (-1);
 	return (0);
 }
