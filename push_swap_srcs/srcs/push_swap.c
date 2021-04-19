@@ -6,7 +6,7 @@
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 19:20:38 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/19 17:45:52 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 20:37:23 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2 || check_args(argv[1]) == -1)
-	{
-		ft_printf(PRINT_ERROR);
+	int	*stack_a;
+	int	stack_size;
+
+	stack_a = NULL;
+	if (manage_error(argv[1], argc, &stack_a, &stack_size) == -1)
 		return (0);
-	}
-	if (manage_int_array(argv[1]) == -1)
-	{
-		ft_printf(PRINT_ERROR);
-		return (0);
-	}
-	return (0);
 }

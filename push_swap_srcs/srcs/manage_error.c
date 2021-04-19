@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   manage_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/18 19:21:20 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/19 20:33:46 by pbrochar         ###   ########.fr       */
+/*   Created: 2021/04/19 20:29:45 by pbrochar          #+#    #+#             */
+/*   Updated: 2021/04/19 20:37:59 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-
-# define PRINT_ERROR "Error\n"
-
-int	check_string(const char *arg);
-int	manage_int_array(const char *arg, int **stack_a, int *stack_size);
-int	manage_error(const char *arg, int argc, int **stack_a, int *size);
-int	check_duplicate(int *stack_a, int size);
-#endif
+int	manage_error(const char *arg, int argc, int **stack_a, int *size)
+{
+	if (argc != 2 || check_string(arg) == -1
+		|| manage_int_array(arg, stack_a, size) == -1
+		|| check_duplicate(*stack_a, *size) == -1)
+	{
+		if (*stack_a)
+			free(*stack_a);
+		ft_printf(PRINT_ERROR);
+		return (-1);
+	}
+	return (0);
+}
