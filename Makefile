@@ -30,7 +30,7 @@ FLAGS = -Wall -Wextra -Werror
 # RULES
 all : $(PS_NAME)
 
-$(PS_NAME) : $(PS_OBJS) 
+$(PS_NAME) : $(LIBFT) $(PS_OBJS) 
 	$(CC) $(FLAGS) -o $(PS_NAME) $(PS_OBJS) $(LIBFT_LIB)
 
 $(PS_DIR)/srcs/%.o : $(PS_DIR)/srcs/%.c

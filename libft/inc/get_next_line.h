@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 14:11:45 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/18 12:46:05 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 15:42:42 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	s_gnl
 }				t_gnl;
 
 int				get_next_line(int fd, char **line);
-char			*ft_realloc(char *src, size_t newsize);
+char			*ft_char_realloc(char *src, size_t newsize);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 int				ft_strccat(t_gnl *gnl, char **dst);
 size_t			ft_strclen(char *str);

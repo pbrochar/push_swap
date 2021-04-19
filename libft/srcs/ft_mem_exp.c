@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_mem_exp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/17 19:05:00 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/19 18:51:52 by pbrochar         ###   ########.fr       */
+/*   Created: 2021/04/19 16:05:34 by pbrochar          #+#    #+#             */
+/*   Updated: 2021/04/19 17:35:40 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	*ft_mem_exp(void *ptr, size_t old_size, size_t new_size)
 {
-	int				s;
-	long int		nbr;
+	void *new_ptr;
 
-	nbr = 0;
-	s = 1;
-	while (ft_isspace(*nptr))
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
-	{
-		if (*nptr == '-')
-			s *= -1;
-		nptr++;
-	}
-	while (ft_isdigit(*nptr))
-	{
-		nbr = (nbr * 10) + (*nptr - '0');
-		if (nbr * s < INT_MIN || nbr * s > INT_MAX)
-			return (s < 0 ? 0 : -1);
-		nptr++;
-	}
-	return ((int)nbr * s);
+	if (new_size == 0)
+		return (NULL);
+	if (new_size < old_size)
+		return (NULL);
+	new_ptr = malloc(new_size);
+	if (new_ptr == NULL)
+		return (NULL);
+	ft_bzero(new_ptr, new_size);
+	if (old_size == 0 || !ptr)
+		return (new_ptr);
+	new_ptr = ft_memmove(new_ptr, ptr, old_size);
+	free(ptr);
+	return (new_ptr);
 }

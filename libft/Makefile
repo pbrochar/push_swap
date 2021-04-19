@@ -1,18 +1,18 @@
 NAME = libft.a
 
-SRCS_DIR = ./srcs/
-PF_DIR = $(SRCS_DIR)ft_printf/
-GNL_DIR = $(SRCS_DIR)get_next_line/
+SRCS_DIR = ./srcs
+PF_DIR = $(SRCS_DIR)/ft_printf
+GNL_DIR = $(SRCS_DIR)/get_next_line
 
-SRCS = $(wildcard $(SRCS_DIR)*.c)
-SRCS_PF = $(wildcard $(PF_DIR)*.c)
-SRCS_GNL = $(wildcard $(GNL_DIR)*c)
+SRCS = $(wildcard $(SRCS_DIR)/*.c)
+SRCS_PF = $(wildcard $(PF_DIR)/*.c)
+SRCS_GNL = $(wildcard $(GNL_DIR)/*c)
 
 OBJ = ${SRCS:.c=.o}
 OBJ_PF = ${SRCS_PF:.c=.o}
 OBJ_GNL = ${SRCS_GNL:.c=.o}
 
-INC_DIR = ./inc/
+INC_DIR = ./inc
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -30,7 +30,6 @@ clean :
 	rm -f $(OBJ) 
 	rm -rf $(OBJ_PF)
 	rm -rf $(OBJ_GNL)
-	rm -f libft.h.gch
 
 fclean : clean
 	rm -f $(NAME)

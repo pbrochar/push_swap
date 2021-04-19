@@ -6,7 +6,7 @@
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 19:21:20 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/18 19:58:36 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 15:28:54 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define PRINT_ERROR ft_printf("Error\n")
+# define PRINT_ERROR "Error\n"
 
 int	check_args(const char *arg);
-
+int	manage_int_array(const char *arg);
 #endif

@@ -6,7 +6,7 @@
 /*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 19:48:22 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/18 12:48:56 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 18:51:38 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
 typedef struct	s_list
 {
 	void				*content;
@@ -30,6 +32,7 @@ int				ft_isalpha(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
+int				ft_isspace(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_strcmp(const char *s1, const char *s2);
@@ -61,6 +64,7 @@ void			*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void			*ft_memmove(void *dest, const void *src, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);
+void			*ft_mem_exp(void *ptr, size_t old_size, size_t new_size);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);

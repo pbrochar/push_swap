@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pbrochar <pbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 14:09:43 by pbrochar          #+#    #+#             */
-/*   Updated: 2021/04/18 12:45:36 by pbrochar         ###   ########.fr       */
+/*   Updated: 2021/04/19 15:42:25 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_strccat(t_gnl *gnl, char **dst)
 
 	i = 0;
 	a = gnl->pos;
-	*dst = ft_realloc(*dst, ft_strclen(&(gnl->buf[a]))
+	*dst = ft_char_realloc(*dst, ft_strclen(&(gnl->buf[a]))
 						+ ft_strclen(*dst));
 	while ((*dst)[i])
 		i++;
@@ -50,7 +50,7 @@ int			ft_strccat(t_gnl *gnl, char **dst)
 	return (0);
 }
 
-char		*ft_realloc(char *src, size_t newsize)
+char		*ft_char_realloc(char *src, size_t newsize)
 {
 	int		i;
 	char	*new;
